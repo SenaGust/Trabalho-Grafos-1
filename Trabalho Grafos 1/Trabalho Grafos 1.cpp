@@ -11,7 +11,8 @@ using namespace std;
 int main()
 {
 	//O valor representa a quantidade de linhas e colunas da nossa matriz adjacente
-	int Grafo[4][4];
+	const int Qtde_Vertices = 4;
+	int Grafo[Qtde_Vertices][Qtde_Vertices];
 
 	//	0	1	0   0
 	//	1	0	1	0
@@ -19,34 +20,35 @@ int main()
 	//	0	0	0	0
 
 	//Instanciando cada campo da matriz
-	for (size_t linha = 0; linha < 4; linha++)
-		for (size_t coluna = 0; coluna < 4; coluna++)
+	for (size_t linha = 0; linha < Qtde_Vertices; linha++)
+		for (size_t coluna = 0; coluna < Qtde_Vertices; coluna++)
 			Grafo[linha][coluna] = 0;
 
 	//Perguntamos quantas ?arestas a matriz possui?
 	int Qtde_Arestas = 0;
-	int Linha = 0;
-	int Coluna = 0;
+	int LinhaAresta = 0;
+	int ColunaAresta = 0;
 	
 	cout << "Digite a quantidade de arestas: ";
 	cin >> Qtde_Arestas;
 
 	//De alguma forma distribuir essas arestas pela matriz
-	for (size_t i = 0; i < Qtde_Arestas; i++)
+	for (size_t pos = 0; pos < Qtde_Arestas; pos++)
 	{
-		cout << "Digite o local da " << Qtde_Arestas << " aresta: " << endl;
+		cout << "Digite o local da " << pos << " aresta: " << endl;
 		cout << "Linha: ";
-		cin >> Linha;
+		cin >> LinhaAresta;
 		cout << "Coluna: ";
-		cin >> Coluna;
+		cin >> ColunaAresta;
 		
-		//Adicionar existência
-		if (Linha != Coluna)
-			Grafo[Linha][Coluna] = 1;
+		//Adicionar existência da aresta na matriz
+		if (LinhaAresta != ColunaAresta)
+			Grafo[LinhaAresta][ColunaAresta] = 1;
+		else
+			cerr << "Ocorreu um erro causado pelo usuário.";
 
 		cout << "\n";
 	}
-	cout << "\n";
 	cout << "\n";
 	cout << "Exibindo matriz" << endl;
 
